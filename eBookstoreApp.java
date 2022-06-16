@@ -2,9 +2,11 @@ import java.util.*;
 import java.sql.*;
 
 public class eBookstoreApp {
-	
+	/*
+	 * The eBookstore Application. The server must first be launched and then run through the terminal.
+	 */
 	private static void endCont() {
-		
+		//Holds the application till the user wishes to return to the menu
 		System.out.println("Press ENTER to Return to Menu");
 		Scanner input = new Scanner(System.in);
 		String end = input.nextLine();
@@ -14,29 +16,27 @@ public class eBookstoreApp {
 	}
 	
 	public static void menu() {
-
+		//The main UI the user decides what to do. 
 		System.out.println("=======================");
 		System.out.println("         MENU");
 		System.out.println("=======================");
 		System.out.println(" ");
-		System.out.println(" 1.  Search Book");
-		System.out.println(" 2.  Enter/Add Book");
-		System.out.println(" 3.  Update Book");
-		System.out.println(" 4.  Delete Book");
-		System.out.println(" 5.  Print Book Database");
-		System.out.println(" 0.  Exit");
+		System.out.println(" [*]  1.  Search Book");
+		System.out.println(" [*]  2.  Enter/Add Book");
+		System.out.println(" [*]  3.  Update Book");
+		System.out.println(" [*]  4.  Delete Book");
+		System.out.println(" [*]  5.  Print Book Database");
+		System.out.println(" [*]  0.  Exit");
 		System.out.println(" ");
 	}
-
-//########################################################
 	
 	public static void search() {
-		
+		//The main search function for searching the databse
 		Scanner input = new Scanner(System.in);
 		String userInput;
 		int userInputInt;
 		String sqlSelect = null;
-		
+		//The UI used for the search function
 		System.out.println(" ");
 		System.out.println("=====SEARCH=====");
 		System.out.println(" ");
@@ -49,16 +49,21 @@ public class eBookstoreApp {
 		System.out.println(" ");
 		
 		while (true)  {
+			//The user will choose which option they wish to do
 			System.out.println("Enter Number of Choice: ");
 			userInput = input.nextLine();
 			try {
 				userInputInt = Integer.parseInt(userInput);
+				//Use if statement to filter through user input and execute sql query
 				if (userInputInt == 1) {
+					//Search the database using the unique id
 					System.out.println("Enter ID: "); String id = input.next();
+					//Select the book based on the id from the database
 					sqlSelect = "select * from books where id = '" + id + "'";
 					break;
 				} else if (userInputInt == 2) {
 					System.out.println("Enter Title: "); String Title = input.next();
+					//Select the book based on the author from the database
 					sqlSelect = "select * from books where Author = '" + Title + "'";
 					break;
 				} else if (userInputInt == 3) {
